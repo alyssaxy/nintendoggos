@@ -6,14 +6,14 @@ import java.awt.event.*;
 public class Nintendoggo {
 	JFrame window;
 	Container con;
-	JPanel titleNamePanel, startButtonPanel, mainTextPanel;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
 	JLabel titleNameLabel;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
 	JButton startButton;
 	JTextArea mainTextArea;
 	
-	// TitleScreenHandler tsHandler = new TitleScreenHandler();
+	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	// ChoiceHandler choiceHandler = new ChoiceHandler();
 
 
@@ -43,7 +43,7 @@ public class Nintendoggo {
 		startButton.setBackground(Color.lightGray);
 		startButton.setForeground(Color.black);
 		startButton.setFont(normalFont);
-		// startButton.addActionListener(tsHandler);
+		startButton.addActionListener(tsHandler);
 		// startButton.setFocusPainted(false);
 		
 		titleNamePanel.add(titleNameLabel);
@@ -55,6 +55,9 @@ public class Nintendoggo {
 
 	}
 	public void createGameScreen() {
+		titleNamePanel.setVisible(false);
+		startButtonPanel.setVisible(false);
+
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(100, 100, 600, 250);
 		mainTextPanel.setBackground(Color.black);
@@ -67,6 +70,16 @@ public class Nintendoggo {
 		mainTextArea.setFont(normalFont);
 		mainTextArea.setLineWrap(true);
 		mainTextPanel.add(mainTextArea);
+
+		choiceButtonPanel = new JPanel();
+		choiceButtonPanel.setBounds(100, 500, 600, 100);
+		choiceButtonPanel.setBackground(Color.red);
+		con.add(choiceButtonPanel);
+	}
+	public class TitleScreenHandler implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			createGameScreen();
+		}
 	}
 
 }
