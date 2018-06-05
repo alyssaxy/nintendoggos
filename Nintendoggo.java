@@ -6,12 +6,12 @@ import java.awt.event.*;
 public class Nintendoggo {
 	JFrame window;
 	Container con;
-	JPanel titleNamePanel, startButtonPanel;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel;
 	JLabel titleNameLabel;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
-	Font normalFont = new Font("Arial", Font.PLAIN, 28);
+	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
 	JButton startButton;
-	// JTextArea mainTextArea;
+	JTextArea mainTextArea;
 	
 	// TitleScreenHandler tsHandler = new TitleScreenHandler();
 	// ChoiceHandler choiceHandler = new ChoiceHandler();
@@ -39,9 +39,9 @@ public class Nintendoggo {
 		startButtonPanel.setBounds(300, 400, 200, 100);
 		startButtonPanel.setBackground(Color.lightGray);
 		
-		startButton = new JButton("START");
+		startButton = new JButton("bark");
 		startButton.setBackground(Color.lightGray);
-		startButton.setForeground(Color.white);
+		startButton.setForeground(Color.black);
 		startButton.setFont(normalFont);
 		// startButton.addActionListener(tsHandler);
 		// startButton.setFocusPainted(false);
@@ -53,6 +53,20 @@ public class Nintendoggo {
 		con.add(startButtonPanel);
 		window.setVisible(true);
 
+	}
+	public void createGameScreen() {
+		mainTextPanel = new JPanel();
+		mainTextPanel.setBounds(100, 100, 600, 250);
+		mainTextPanel.setBackground(Color.black);
+		con.add(mainTextPanel);
+
+		mainTextArea = new JTextArea();
+		mainTextArea.setBounds(100, 100, 600, 250);
+		mainTextArea.setBackground(Color.black);
+		mainTextArea.setForeground(Color.white);
+		mainTextArea.setFont(normalFont);
+		mainTextArea.setLineWrap(true);
+		mainTextPanel.add(mainTextArea);
 	}
 
 }
