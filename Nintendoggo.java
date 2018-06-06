@@ -10,7 +10,7 @@ public class Nintendoggo {
 	JLabel titleNameLabel;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
-	JButton startButton;
+	JButton startButton, choice1, choice2, choice3, choice4;
 	JTextArea mainTextArea;
 	
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
@@ -72,9 +72,35 @@ public class Nintendoggo {
 		mainTextPanel.add(mainTextArea);
 
 		choiceButtonPanel = new JPanel();
-		choiceButtonPanel.setBounds(100, 500, 600, 100);
-		choiceButtonPanel.setBackground(Color.red);
+		choiceButtonPanel.setBounds(50, 450, 700, 40);
+		choiceButtonPanel.setBackground(Color.lightGray);
+		choiceButtonPanel.setLayout(new GridLayout(1,4));
 		con.add(choiceButtonPanel);
+
+		choice1 = new JButton("corgi");
+		choice1.setBackground(Color.lightGray);
+		choice1.setForeground(Color.black);
+		choice1.setFont(normalFont);
+		choiceButtonPanel.add(choice1);
+
+		choice2 = new JButton("pug");
+		choice2.setBackground(Color.lightGray);
+		choice2.setForeground(Color.black);
+		choice2.setFont(normalFont);
+		choiceButtonPanel.add(choice2);
+
+		choice3 = new JButton("samoyed");
+		choice3.setBackground(Color.lightGray);
+		choice3.setForeground(Color.black);
+		choice3.setFont(normalFont);
+		choiceButtonPanel.add(choice3);
+		
+		choice4 = new JButton("husky");
+		choice4.setBackground(Color.lightGray);
+		choice4.setForeground(Color.black);
+		choice4.setFont(normalFont);
+		choiceButtonPanel.add(choice4);
+		
 	}
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
