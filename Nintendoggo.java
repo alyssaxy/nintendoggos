@@ -3,11 +3,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Nintendoggo { //test changes
+public class Nintendoggo {
 	JFrame window;
 	Container con;
 	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
-	JLabel titleNameLabel;
+	JLabel titleNameLabel, mainTextLabel;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
 	JButton startButton, choice1, choice2, choice3, choice4;
@@ -59,17 +59,21 @@ public class Nintendoggo { //test changes
 		startButtonPanel.setVisible(false);
 
 		mainTextPanel = new JPanel();
-		mainTextPanel.setBounds(100, 100, 600, 250);
-		mainTextPanel.setBackground(Color.black);
+		mainTextPanel.setBounds(200, 15, 400, 80);
+		mainTextPanel.setBackground(Color.lightGray);
+		mainTextLabel = new JLabel("adopt a pupper!");
+		mainTextLabel.setForeground(Color.white);
+		mainTextLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 50));
 		con.add(mainTextPanel);
+		mainTextPanel.add(mainTextLabel);
 
-		mainTextArea = new JTextArea();
-		mainTextArea.setBounds(100, 100, 600, 250);
-		mainTextArea.setBackground(Color.black);
-		mainTextArea.setForeground(Color.white);
-		mainTextArea.setFont(normalFont);
-		mainTextArea.setLineWrap(true);
-		mainTextPanel.add(mainTextArea);
+		// mainTextArea = new JTextArea();
+		// mainTextArea.setBounds(100, 100, 600, 250);
+		// mainTextArea.setBackground(Color.black);
+		// mainTextArea.setForeground(Color.white);
+		// mainTextArea.setFont(normalFont);
+		// mainTextArea.setLineWrap(true);
+		// mainTextPanel.add(mainTextArea);
 
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(50, 450, 700, 40);
