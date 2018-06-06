@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Nintendoggo {
+public class Nintendoggo { //test changes
 	JFrame window;
 	Container con;
 	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
