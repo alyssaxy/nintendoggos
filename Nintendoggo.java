@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class Nintendoggo {
 	JFrame window;
 	Container con;
-	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, imagePanel;
 	JLabel titleNameLabel, mainTextLabel;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
@@ -105,6 +105,12 @@ public class Nintendoggo {
 		choice4.setFont(normalFont);
 		choiceButtonPanel.add(choice4);
 		
+		imagePanel = new JPanel();
+		imagePanel.setBounds(50,100,700,300);
+		imagePanel.setBackground(Color.blue);
+
+		con.add(imagePanel);
+				
 	}
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
