@@ -7,7 +7,7 @@ public class Nintendoggo {
 	JFrame window;
 	Container con;
 	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, imagePanel, menuPanelPts, menuPanelName;
-	JLabel titleNameLabel, mainTextLabel, imageLabel, dogNameLabel, dogNewlyNamed, pointsLabel, pointsLabelNumber;
+	JLabel titleNameLabel, mainTextLabel, imageLabel, dogNameLabel, pointsLabel, pointsLabelNumber;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
 	JButton startButton, choice1, choice2, choice3, choice4;
@@ -57,6 +57,7 @@ public class Nintendoggo {
 		titleNamePanel.setVisible(false);
 		startButtonPanel.setVisible(false);
 
+	/* new heading */
 		mainTextPanel = new JPanel();
 		mainTextPanel.setBounds(200, 15, 400, 80);
 		mainTextPanel.setBackground(Color.lightGray);
@@ -117,9 +118,10 @@ public class Nintendoggo {
 	public void playerSetup(String dogChosen) {
 		titleNamePanel.setVisible(false);
 		startButtonPanel.setVisible(false);
-		// *****************imagePanel: change images to only the chosen dog
 		choiceButtonPanel.setVisible(false);
+	// *****************imagePanel: change images to only the chosen dog
 
+	/* change the heading */
 		mainTextPanel.remove(mainTextLabel);
 		mainTextPanel.setBounds(100, 15, 600, 80);
 		mainTextLabel = new JLabel("give your new " + dogChosen + " a name!");
@@ -127,6 +129,7 @@ public class Nintendoggo {
 		mainTextLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 40));
 		mainTextPanel.add(mainTextLabel);
 
+	/* user enters name of dog */
 		JTextField nameTextField = new JTextField(20);
 		nameTextField.setBounds(250, 450, 300, 40);
 		con.add(nameTextField);
@@ -143,23 +146,48 @@ public class Nintendoggo {
 		titleNamePanel.setVisible(true);
 		startButtonPanel.setVisible(false);
 		choiceButtonPanel.setVisible(false);
-		mainTextPanel.setVisible(false);
 
-		/* cover up the TextField with titleNamePanel */
+	/* cover up the TextField with titleNamePanel */
 		titleNamePanel.setBounds(250, 450, 300, 40);
 		titleNamePanel.setBackground(Color.lightGray);
 		titleNameLabel.setText("");
 
-		//********************imagePanel: a single dog
+	//********************imagePanel: a single dog
 
+	/* row at the top of the screen */
+	/* left side: points */
 		menuPanelPts = new JPanel();
-		menuPanelPts.setBounds(5, 5, 100, 80);
-		menuPanelPts.setBackground(Color.red);
-
+		menuPanelPts.setBounds(5, 5, 120, 50);
+		menuPanelPts.setBackground(Color.lightGray);
+		pointsLabel = new JLabel("Points: ");
+		pointsLabel.setForeground(Color.white);
+		pointsLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 20));
+	//*********************pointsLabelNumber needs to be a variable
+		pointsLabelNumber = new JLabel("0");
+		pointsLabelNumber.setForeground(Color.white);
+		pointsLabelNumber.setFont(new Font("Bradley Hand", Font.PLAIN, 20));
+		con.add(menuPanelPts);
+		menuPanelPts.add(pointsLabel);
+		menuPanelPts.add(pointsLabelNumber);
+		
+	/* right side: name (static) */
 		menuPanelName = new JPanel();
-		menuPanelName.setBounds(695, 5, 100, 80);
+		menuPanelName.setBounds(600, 5, 200, 50);
 		menuPanelName.setBackground(Color.red);
+		dogNameLabel = new JLabel(dogNewlyNamed, JLabel.RIGHT); //right align doesnt work:(
+		dogNameLabel.setForeground(Color.white);
+		dogNameLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 20));
+		con.add(menuPanelName);
+		menuPanelName.add(dogNameLabel);
 
+	/* change the heading */
+		mainTextPanel.remove(mainTextLabel);
+		mainTextPanel.setBounds(0, 36, 800, 55);
+		mainTextPanel.setBackground(Color.lightGray);
+		mainTextLabel = new JLabel("what would you like to do with " +dogNewlyNamed+"?");
+		mainTextLabel.setForeground(Color.white);
+		mainTextLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 40));
+		mainTextPanel.add(mainTextLabel);
 
 	}
 	public class TitleScreenHandler implements ActionListener {
