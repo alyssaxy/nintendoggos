@@ -12,6 +12,7 @@ public class Nintendoggo {
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
 	JButton startButton, choice1, choice2, choice3, choice4;
 	JTextArea mainTextArea;
+	ImageIcon image;
 	
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
 	// ChoiceHandler choiceHandler = new ChoiceHandler();
@@ -107,7 +108,12 @@ public class Nintendoggo {
 		
 		imagePanel = new JPanel();
 		imagePanel.setBounds(50,100,700,300);
-		imagePanel.setBackground(Color.blue);
+		imagePanel.setBackground(Color.white);
+
+		imageLabel = new JLabel();
+		image = new ImageIcon("crogi.png");
+		imageLabel.setIcon(image);
+		imagePanel.add(imageLabel);
 
 		con.add(imagePanel);
 				
