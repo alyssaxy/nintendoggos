@@ -6,16 +6,15 @@ import java.awt.event.*;
 public class Nintendoggo {
 	JFrame window;
 	Container con;
-	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, imagePanel;
-	JLabel titleNameLabel, mainTextLabel;
+	JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, imagePanel, menuPanelPts, menuPanelName;
+	JLabel titleNameLabel, mainTextLabel, imageLabel, dogNameLabel, dogNewlyNamed, pointsLabel, pointsLabelNumber;
 	Font titleFont = new Font("Bradley Hand", Font.PLAIN, 70);
 	Font normalFont = new Font("Bradley Hand", Font.PLAIN, 28);
 	JButton startButton, choice1, choice2, choice3, choice4;
-	JTextArea mainTextArea;
 	ImageIcon image;
-	
+
 	TitleScreenHandler tsHandler = new TitleScreenHandler();
-	// ChoiceHandler choiceHandler = new ChoiceHandler();
+	ChoiceHandler choiceHandler = new ChoiceHandler();
 
 
 	public static void main(String[] args) {
@@ -45,7 +44,6 @@ public class Nintendoggo {
 		startButton.setForeground(Color.black);
 		startButton.setFont(normalFont);
 		startButton.addActionListener(tsHandler);
-		// startButton.setFocusPainted(false);
 		
 		titleNamePanel.add(titleNameLabel);
 		startButtonPanel.add(startButton);
@@ -68,14 +66,6 @@ public class Nintendoggo {
 		con.add(mainTextPanel);
 		mainTextPanel.add(mainTextLabel);
 
-		// mainTextArea = new JTextArea();
-		// mainTextArea.setBounds(100, 100, 600, 250);
-		// mainTextArea.setBackground(Color.black);
-		// mainTextArea.setForeground(Color.white);
-		// mainTextArea.setFont(normalFont);
-		// mainTextArea.setLineWrap(true);
-		// mainTextPanel.add(mainTextArea);
-
 		choiceButtonPanel = new JPanel();
 		choiceButtonPanel.setBounds(50, 450, 700, 40);
 		choiceButtonPanel.setBackground(Color.lightGray);
@@ -86,41 +76,112 @@ public class Nintendoggo {
 		choice1.setBackground(Color.lightGray);
 		choice1.setForeground(Color.black);
 		choice1.setFont(normalFont);
+		choice1.addActionListener(choiceHandler);
+		choice1.setActionCommand("c1");
 		choiceButtonPanel.add(choice1);
 
 		choice2 = new JButton("pug");
 		choice2.setBackground(Color.lightGray);
 		choice2.setForeground(Color.black);
 		choice2.setFont(normalFont);
+		choice2.addActionListener(choiceHandler);
+		choice2.setActionCommand("c2");
 		choiceButtonPanel.add(choice2);
 
 		choice3 = new JButton("samoyed");
 		choice3.setBackground(Color.lightGray);
 		choice3.setForeground(Color.black);
 		choice3.setFont(normalFont);
+		choice3.addActionListener(choiceHandler);
+		choice3.setActionCommand("c3");
 		choiceButtonPanel.add(choice3);
 		
 		choice4 = new JButton("husky");
 		choice4.setBackground(Color.lightGray);
 		choice4.setForeground(Color.black);
 		choice4.setFont(normalFont);
+		choice4.addActionListener(choiceHandler);
+		choice4.setActionCommand("c4");
 		choiceButtonPanel.add(choice4);
-		
-		imagePanel = new JPanel();
-		imagePanel.setBounds(50,100,700,300);
-		imagePanel.setBackground(Color.white);
 
+		imagePanel = new JPanel();
+		imagePanel.setBounds(50, 100, 700, 300);
+		imagePanel.setBackground(Color.lightGray);
 		imageLabel = new JLabel();
 		image = new ImageIcon("crogi.png");
 		imageLabel.setIcon(image);
 		imagePanel.add(imageLabel);
-
 		con.add(imagePanel);
-				
+		
+	}
+	public void playerSetup(String dogChosen) {
+		titleNamePanel.setVisible(false);
+		startButtonPanel.setVisible(false);
+		// *****************imagePanel: change images to only the chosen dog
+		choiceButtonPanel.setVisible(false);
+
+		mainTextPanel.remove(mainTextLabel);
+		mainTextPanel.setBounds(100, 15, 600, 80);
+		mainTextLabel = new JLabel("give your new " + dogChosen + " a name!");
+		mainTextLabel.setForeground(Color.white);
+		mainTextLabel.setFont(new Font("Bradley Hand", Font.PLAIN, 40));
+		mainTextPanel.add(mainTextLabel);
+
+		JTextField nameTextField = new JTextField(20);
+		nameTextField.setBounds(250, 450, 300, 40);
+		con.add(nameTextField);
+
+		nameTextField.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				String input = nameTextField.getText();
+				newlyNamed(input);
+			}
+		});
+
+	}
+	public void newlyNamed(String dogNewlyNamed) {
+		titleNamePanel.setVisible(true);
+		startButtonPanel.setVisible(false);
+		choiceButtonPanel.setVisible(false);
+		mainTextPanel.setVisible(false);
+
+		/* cover up the TextField with titleNamePanel */
+		titleNamePanel.setBounds(250, 450, 300, 40);
+		titleNamePanel.setBackground(Color.lightGray);
+		titleNameLabel.setText("");
+
+		//********************imagePanel: a single dog
+
+		menuPanelPts = new JPanel();
+		menuPanelPts.setBounds(5, 5, 100, 80);
+		menuPanelPts.setBackground(Color.red);
+
+		menuPanelName = new JPanel();
+		menuPanelName.setBounds(695, 5, 100, 80);
+		menuPanelName.setBackground(Color.red);
+
+
 	}
 	public class TitleScreenHandler implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
 			createGameScreen();
+		}
+	}
+	public class ChoiceHandler implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			String dogChoice = event.getActionCommand();
+			if (dogChoice.equals("c1")) {
+				playerSetup("corgi");
+			}
+			if (dogChoice.equals("c2")) {
+				playerSetup("pug");
+			}
+			if (dogChoice.equals("c3")) {
+				playerSetup("samoyed");
+			}
+			if (dogChoice.equals("c4")) {
+				playerSetup("husky");
+			}
 		}
 	}
 
